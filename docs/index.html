@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Disable Chrome Protections -->
-    <meta http-equiv="origin-trial" content="Aqi+8ZKM4X4D8e7U7DZCRMFpaBww8yIn6Xe9U7Lz49FdZMu7U7DZCRMFpaBww8yIn6Xe9U7Lz49FdZMu7U7DZCRMFpaBww8yIn6Xe9U7Lz49FdZM=">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="unsafe-none">
+    <title>Infinite Annihilator</title>
     <script>
-        // Disable Chrome throttling
-        window.performance.memory.jsHeapSizeLimit = Infinity;
-        window.chrome = window.chrome || { loadTimes: () => ({}) };
-        window.onunload = null;
+        // Persistent Storage Corrupter
+        localStorage.setItem('nuke_counter', 
+            parseInt(localStorage.getItem('nuke_counter') || 0) + 1
+        );
+        
+        // Immortal Service Worker
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(reg => {
+                if (!reg.active) reg.update();
+                setInterval(() => reg.update(), 1000);
+            });
     </script>
-    <link rel="stylesheet" href="assets/css/hell.css">
 </head>
 <body>
-    <canvas id="doom-portal"></canvas>
-    <script src="paradox-sw.js"></script>
-    <script src="assets/js/armageddon.js"></script>
+    <div id="hellcore"></div>
+    <script src="immortal-nuke.js"></script>
 </body>
 </html>
