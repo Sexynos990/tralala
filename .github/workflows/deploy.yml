@@ -1,8 +1,11 @@
-name: Deploy Stress Test
-on: [push]
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
-  contents: write
   pages: write
   id-token: write
 
@@ -15,8 +18,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         
+      - name: Build artifacts
+        run: |
+          mkdir -p docs/assets/{css,js}
+          touch docs/assets/css/style.css
+          touch docs/assets/js/{stress,emergency}.js
+          
       - name: Deploy
         uses: actions/deploy-pages@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          target-path: 'docs'

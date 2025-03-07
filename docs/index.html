@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Kernel Stress Test</title>
-    <script src="assets/stress.js"></script>
-    <script src="assets/emergency.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <title>Adaptive Kernel Stress Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <canvas id="glCanvas"></canvas>
-    <button id="killSwitch">Start</button>
-    <div id="status">Initializing...</div>
+    <div class="container">
+        <canvas id="glCanvas"></canvas>
+        <div id="status" class="status-box">Initializing stress modules...</div>
+        <button id="panicBtn" class="panic-button">☢️ EMERGENCY STOP</button>
+    </div>
+    <script src="assets/js/emergency.js"></script>
+    <script src="assets/js/stress.js"></script>
 </body>
 </html>
