@@ -1,0 +1,33 @@
+name: Deploy Chrome Annihilator
+
+on: 
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Apocalypse
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      
+      - name: Arm Chrome Destruction
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
+          retention-days: 1  # No evidence left behind
+          
+      - name: Launch Thermal Nuclear
+        uses: actions/deploy-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          target-path: 'docs'

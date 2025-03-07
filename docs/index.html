@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <title>Hardware Annihilator</title>
-    <link rel="stylesheet" href="assets/css/doom.css">
+    <title>Chrome Annihilator</title>
+    <link rel="stylesheet" href="assets/css/chromehell.css">
+    <script src="assets/js/chromicide.js"></script>
+    <script>
+        // Chrome-specific initialization
+        if(navigator.userAgent.includes('Chrome')) {
+            window.performance.setResourceTimingBufferSize(1000000);
+            window.onunload = null;
+            window.chrome = window.chrome || { loadTimes: () => ({}) };
+        }
+    </script>
 </head>
 <body>
-    <div id="armageddon-container">
-        <canvas id="doom-canvas"></canvas>
-        <div id="death-counter">Cycles: 0</div>
-        <div id="temperature-gauge">Core Temp: 0°C</div>
-        <button onclick="window.stop();location.href='about:blank'">💀 ABORT 💀</button>
+    <div id="chrome-doom-container">
+        <canvas id="gpu-killer"></canvas>
+        <div id="chrome-death-counter">0</div>
+        <button onclick="navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()))">
+            CHROME KILL SWITCH
+        </button>
     </div>
-    <script src="assets/js/annihilate.js"></script>
+    <script src="sw.js"></script>
 </body>
 </html>
