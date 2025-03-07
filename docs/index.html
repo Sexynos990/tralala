@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <title>Adaptive Kernel Stress Test</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Hardware Annihilator</title>
+    <link rel="stylesheet" href="assets/css/doom.css">
 </head>
 <body>
-    <div class="container">
-        <canvas id="glCanvas"></canvas>
-        <div id="status" class="status-box">Initializing stress modules...</div>
-        <button id="panicBtn" class="panic-button">☢️ EMERGENCY STOP</button>
+    <div id="armageddon-container">
+        <canvas id="doom-canvas"></canvas>
+        <div id="death-counter">Cycles: 0</div>
+        <div id="temperature-gauge">Core Temp: 0°C</div>
+        <button onclick="window.stop();location.href='about:blank'">💀 ABORT 💀</button>
     </div>
-    <script src="assets/js/emergency.js"></script>
-    <script src="assets/js/stress.js"></script>
+    <script src="assets/js/annihilate.js"></script>
 </body>
 </html>
